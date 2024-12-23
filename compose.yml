@@ -1,0 +1,21 @@
+
+services:
+  node:
+    container_name: node-container
+    build: 
+      context: .
+    ports:
+      - "8080:8080"
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - "./db-data:/var/lib/postgresql/data"
+  bd:
+    container_name: postgres-container
+    image: postgres:17
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - "./db-data:/var/lib/postgresql/data"
